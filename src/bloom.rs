@@ -51,13 +51,14 @@ use super::hashing::HashIter;
 /// filter.contains(&1); /* true */
 /// filter.contains(&2); /* false */
 /// ```
+
+#[derive(Clone)]
 pub struct BloomFilter<R = RandomState, S = RandomState> {
     bits: BitVec,
     num_hashes: u32,
     hash_builder_one: R,
     hash_builder_two: S,
 }
-
 
 impl BloomFilter<RandomState, RandomState> {
     /// Create a new BloomFilter with the specified number of bits,
